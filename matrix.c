@@ -33,7 +33,7 @@ Matrix_s *CreatMatrix(IN unsigned int ucRow,
     memset(pstMatrix, 0, sizeof(Matrix_s));
     pstMatrix->ucRow = ucRow;
     pstMatrix->ucCol = ucCol;
-    pstMatrix->pfDataAdd = (float**)malloc((sizeof(float) * ucRow));
+    pstMatrix->pfDataAdd = (float**)malloc((sizeof(float*) * ucRow));
 
     printf("malloc OK\n");
 
@@ -105,11 +105,11 @@ Matrix_s *AddMatrix(IN const Matrix_s *pstMatrixA,
     pstMatrixResult->ucRow = pstMatrixA->ucRow;
     pstMatrixResult->ucCol = pstMatrixA->ucCol;
 
-    pstMatrixResult->pfDataAdd = (float **)malloc(sizeof(float)*(pstMatrixA->ucRow));
+    pstMatrixResult->pfDataAdd = (float **)malloc(sizeof(float*)*(pstMatrixA->ucRow));
 
     for(i = 0;i < pstMatrixResult->ucRow;i++)
     {
-        (pstMatrixResult->pfDataAdd)[i] = (float *)malloc(sizeof(float)*(pstMatrixA->ucCol));
+        (pstMatrixResult->pfDataAdd)[i] = (float *)malloc(sizeof(float*)*(pstMatrixA->ucCol));
         for(j = 0;j < pstMatrixResult->ucCol;j++)
         {
             (pstMatrixResult->pfDataAdd)[i][j] = (pstMatrixA->pfDataAdd)[i][j] + (pstMatrixB->pfDataAdd)[i][j];
@@ -136,7 +136,7 @@ Matrix_s *SubtractMatrix(IN const Matrix_s *pstMatrixA,
     pstMatrixResult->ucRow = pstMatrixA->ucRow;
     pstMatrixResult->ucCol = pstMatrixA->ucCol;
 
-    pstMatrixResult->pfDataAdd = (float **)malloc(sizeof(float) * (pstMatrixA->ucRow));
+    pstMatrixResult->pfDataAdd = (float **)malloc(sizeof(float*) * (pstMatrixA->ucRow));
 
     for(i = 0;i < pstMatrixResult->ucRow;i++)
     {
