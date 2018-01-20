@@ -109,7 +109,7 @@ Matrix_s *AddMatrix(IN const Matrix_s *pstMatrixA,
 
     for(i = 0;i < pstMatrixResult->ucRow;i++)
     {
-        (pstMatrixResult->pfDataAdd)[i] = (float *)malloc(sizeof(float*)*(pstMatrixA->ucCol));
+        (pstMatrixResult->pfDataAdd)[i] = (float *)malloc(sizeof(float)*(pstMatrixA->ucCol));
         for(j = 0;j < pstMatrixResult->ucCol;j++)
         {
             (pstMatrixResult->pfDataAdd)[i][j] = (pstMatrixA->pfDataAdd)[i][j] + (pstMatrixB->pfDataAdd)[i][j];
